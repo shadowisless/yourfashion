@@ -2,6 +2,11 @@ body {
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 .container {
@@ -42,8 +47,8 @@ p {
 // Aturan Kolom untuk Desktop (lebar > 520px)
 @for $i from 1 through 12 {
     .col#{$i} {
-        width: (100% / (12 / $i)) - 3%;
-        margin: 1.5%;
+        width: (100% / (12 / $i)) - 2%;
+        margin: 1%;
     }
 }
 
@@ -61,7 +66,6 @@ p {
         ul {
             list-style: none;
             display: flex;
-            // Menambahkan flex-wrap agar menu bisa turun ke bawah jika tidak cukup
             flex-wrap: wrap;
             justify-content: center; // Memusatkan menu
             padding: 0; // Menghapus padding default pada ul
@@ -69,7 +73,7 @@ p {
         }
         li a {
             display: inline-block;
-            padding: 10px;
+            padding: 20px 15px;
             text-decoration: none;
             color: black;
         }
@@ -116,10 +120,12 @@ p {
 
 .product {
     padding: 5% 0;
-    background-color: rgb(73, 72, 72);
+    background-color: #f2f2f2;
     &-item {
         background-color: #eee;
-        box-shadow: 1px 1px 12px 1px #eee;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Shadow yang lebih soft
+        border-radius: 8px; // Memberi sudut tumpul
+        overflow: hidden; 
         .pi-detail {
             padding: 20px;
             h4, p {
@@ -144,11 +150,16 @@ p {
 }
 
 // Media Query untuk Tampilan Mobile (lebar <= 520px)
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 768px) {
     .jc-spacebetween {
         justify-content: center;
     }
-    
+    .nav {
+        .row {
+            justify-content: center; // Memusatkan logo dan menu wrapper
+            text-align: center;
+        }
+    }
     .nav-logo, .nav-menu {
         // Membuat logo dan menu mengambil lebar penuh dan berada di tengah
         width: 100%;
@@ -173,14 +184,13 @@ p {
         padding: 4px 10px;
     }
 
-    // Hanya satu perulangan @for di dalam media query
-    // untuk membuat semua kolom menjadi lebar penuh
-    @for $i from 1 through 12 {
-        .col#{$i} {
-            width: 97%; // Sedikit kurang dari 100% untuk margin
-            margin: 1.5%;
-        }
+   [class*="col-"] {
+        width: 100%; /* Membuat semua kolom mengambil lebar penuh */
+        margin: 0 0 20px 0; /* Menghapus margin samping, menambah margin bawah untuk jarak */
     }
-    
-    // Menghapus duplikasi @for yang ada di kode awal Anda
+
+    // Menghapus margin bawah pada elemen kolom terakhir di dalam .row
+    .row > [class*="col-"]:last-child {
+        margin-bottom: 0;
+    }
 }
