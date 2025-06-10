@@ -31,6 +31,7 @@ p{
 
 .img-responsive{
     width: 100%;
+    height: auto;
 }
 
 @for $i from 1 through 12{
@@ -134,6 +135,22 @@ p{
     .jc-spacebetween{
         justify-content: center;
     }
+    .hero {
+    height: 300px;
+  }
+
+  .description-item h2 {
+    font-size: 1.8em;
+  }
+
+  .contact .text {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .nav-menu {
+    text-align: center;
+  }
     @for $i from 1 through 12{
     .col#{$i}{
         width: 100%;
