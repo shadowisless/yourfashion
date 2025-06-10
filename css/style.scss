@@ -1,0 +1,149 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+.container{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+h1,h2,h3,h4,h5{
+    margin: 0;
+    padding: 10px 0;
+    line-height: 120%f;
+}
+p{
+    margin: 0;
+    padding: 10px 0;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ai-center{
+    align-items: center;
+}
+.jc-spacebetween{
+    justify-content: space-between;
+}
+
+.img-responsive{
+    width: 100%;
+}
+
+@for $i from 1 through 12{
+    .col#{$i}{
+        width: (100%/(12/$i)) - 3%;
+        margin: 1.5%;
+    }
+}
+
+.nav{
+    &-logo{
+        h1{
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
+        margin: 1.5%;
+    }
+    &-menu{
+        ul{
+            list-style: none;
+            display: flex;
+            li{
+                a{
+                    display: inline-block;
+                    padding: 10px;
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+        margin: 1.5%
+    }
+}
+
+.hero{
+    background:url(https://images.unsplash.com/photo-1567631643547-67a2dd59f266?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    height: 700px;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+.description{
+    padding: 5% 0;
+    &-item{
+        h2{
+            font-size: 3em;
+            color: black;
+            line-height: 120%;
+            letter-spacing: -1px;
+            margin: 5px 0;
+        }
+        p{
+            font-size: 20px;
+            color: white;
+            line-height: 180%;
+        }
+    }
+}
+
+.content{
+    padding: 5% 0;
+    &-item{
+        padding: 10% 0;
+        h3{
+            font-size: 2em;
+        }
+    }
+}
+
+.product{
+    padding: 5% 0;
+    background-color: rgb(73, 72, 72);
+    &-item{
+        background-color: #eee;
+        box-shadow: 1px 1px 12px 1px #eee;
+        .pi-detail{
+            padding: 20px 20px;
+            h4{margin: 0;   
+            padding: 0;}
+            p{margin: 0;
+            padding: 0;}
+        }
+    }
+}
+
+.contact{
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    .text{
+        background: #eee;
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .jc-spacebetween{
+        justify-content: center;
+    }
+    @for $i from 1 through 12{
+    .col#{$i}{
+        width: 100%;
+    }
+}
+@for $i from 1 through 12{
+    .col#{$i}{
+        width: (100%/(12/$i)) - 3%;
+        margin: 1.5%;
+    }
+}
+}
+    
