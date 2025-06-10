@@ -46,10 +46,10 @@ p {
 
 // Aturan Kolom untuk Desktop (lebar > 520px)
 @for $i from 1 through 12 {
-    .col#{$i} {
-        width: (100% / (12 / $i)) - 2%;
-        margin: 1%;
-    }
+  .col#{$i} {
+    width: calc((100% / 12) * #{$i});
+    padding: 1%;
+  }
 }
 
 .nav {
@@ -75,7 +75,8 @@ p {
             display: inline-block;
             padding: 20px 15px;
             text-decoration: none;
-            color: black;
+            color: #0077cc;
+            transition: color 0.3s;
         }
         margin: 1.5%;
     }
@@ -136,6 +137,11 @@ p {
     }
 }
 
+.product-item {
+  flex: 1 1 calc(33.333% - 2%);
+  margin: 1%;
+}
+
 .contact {
     position: fixed;
     bottom: 30px;
@@ -177,6 +183,11 @@ p {
     
     .description-item p {
         font-size: 16px; // Menyesuaikan ukuran font paragraf juga
+    }
+
+    .product-item {
+    flex: 1 1 100%;
+    margin: 10px 0;
     }
 
     .contact .text {
