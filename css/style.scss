@@ -1,128 +1,140 @@
-body{
+body {
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
-.container{
+
+.container {
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
 }
-h1,h2,h3,h4,h5{
+
+h1, h2, h3, h4, h5 {
     margin: 0;
     padding: 10px 0;
-    line-height: 120%f;
+    line-height: 120%; // 'f' di akhir tidak valid, jadi dihapus
 }
-p{
+
+p {
     margin: 0;
     padding: 10px 0;
 }
-.row{
+
+.row {
     display: flex;
     flex-wrap: wrap;
 }
 
-.ai-center{
+.ai-center {
     align-items: center;
 }
-.jc-spacebetween{
+
+.jc-spacebetween {
     justify-content: space-between;
 }
 
-.img-responsive{
+.img-responsive {
     width: 100%;
     height: auto;
 }
 
-@for $i from 1 through 12{
-    .col#{$i}{
-        width: (100%/(12/$i)) - 3%;
+// Aturan Kolom untuk Desktop (lebar > 520px)
+@for $i from 1 through 12 {
+    .col#{$i} {
+        width: (100% / (12 / $i)) - 3%;
         margin: 1.5%;
     }
 }
 
-.nav{
-    &-logo{
-        h1{
-            a{
+.nav {
+    &-logo {
+        h1 {
+            a {
                 text-decoration: none;
                 color: black;
             }
         }
         margin: 1.5%;
     }
-    &-menu{
-        ul{
+    &-menu {
+        ul {
             list-style: none;
             display: flex;
-            li{
-                a{
-                    display: inline-block;
-                    padding: 10px;
-                    text-decoration: none;
-                    color: black;
-                }
-            }
+            // Menambahkan flex-wrap agar menu bisa turun ke bawah jika tidak cukup
+            flex-wrap: wrap;
+            justify-content: center; // Memusatkan menu
+            padding: 0; // Menghapus padding default pada ul
+            margin: 0;
         }
-        margin: 1.5%
+        li a {
+            display: inline-block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        margin: 1.5%;
     }
 }
 
-.hero{
-    background:url(https://images.unsplash.com/photo-1567631643547-67a2dd59f266?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+.hero {
+    background: url(https://images.unsplash.com/photo-1567631643547-67a2dd59f266?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     height: 700px;
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover; // Menggunakan 'cover' agar gambar selalu memenuhi area
+    background-position: center; // Memusatkan gambar
 }
-.description{
+
+.description {
     padding: 5% 0;
-    &-item{
-        h2{
+    &-item {
+        h2 {
             font-size: 3em;
             color: black;
             line-height: 120%;
             letter-spacing: -1px;
             margin: 5px 0;
         }
-        p{
+        p {
             font-size: 20px;
-            color: white;
+            // Warna teks diubah menjadi hitam agar terbaca
+            color: #333;
             line-height: 180%;
         }
     }
 }
 
-.content{
+.content {
     padding: 5% 0;
-    &-item{
+    &-item {
         padding: 10% 0;
-        h3{
+        h3 {
             font-size: 2em;
         }
     }
 }
 
-.product{
+.product {
     padding: 5% 0;
     background-color: rgb(73, 72, 72);
-    &-item{
+    &-item {
         background-color: #eee;
         box-shadow: 1px 1px 12px 1px #eee;
-        .pi-detail{
-            padding: 20px 20px;
-            h4{margin: 0;   
-            padding: 0;}
-            p{margin: 0;
-            padding: 0;}
+        .pi-detail {
+            padding: 20px;
+            h4, p {
+                margin: 0;
+                padding: 5px 0; // Memberi sedikit jarak vertikal
+            }
         }
     }
 }
 
-.contact{
+.contact {
     position: fixed;
     bottom: 30px;
     right: 40px;
-    .text{
+    .text {
         background: #eee;
         padding: 5px 15px;
         border-radius: 5px;
@@ -131,36 +143,44 @@ p{
     }
 }
 
+// Media Query untuk Tampilan Mobile (lebar <= 520px)
 @media screen and (max-width: 520px) {
-    .jc-spacebetween{
+    .jc-spacebetween {
         justify-content: center;
     }
-    .hero {
-    height: 300px;
-  }
-
-  .description-item h2 {
-    font-size: 1.8em;
-  }
-
-  .contact .text {
-    font-size: 10px;
-    padding: 4px 10px;
-  }
-
-  .nav-menu {
-    text-align: center;
-  }
-    @for $i from 1 through 12{
-    .col#{$i}{
-        width: 100%;
-    }
-}
-@for $i from 1 through 12{
-    .col#{$i}{
-        width: (100%/(12/$i)) - 3%;
-        margin: 1.5%;
-    }
-}
-}
     
+    .nav-logo, .nav-menu {
+        // Membuat logo dan menu mengambil lebar penuh dan berada di tengah
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        height: 300px;
+        background-attachment: scroll; // 'fixed' sering bermasalah di mobile
+    }
+
+    .description-item h2 {
+        font-size: 1.8em;
+    }
+    
+    .description-item p {
+        font-size: 16px; // Menyesuaikan ukuran font paragraf juga
+    }
+
+    .contact .text {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    // Hanya satu perulangan @for di dalam media query
+    // untuk membuat semua kolom menjadi lebar penuh
+    @for $i from 1 through 12 {
+        .col#{$i} {
+            width: 97%; // Sedikit kurang dari 100% untuk margin
+            margin: 1.5%;
+        }
+    }
+    
+    // Menghapus duplikasi @for yang ada di kode awal Anda
+}
